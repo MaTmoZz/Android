@@ -12,7 +12,17 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.myapplication.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity() {
+
+    val monsieur = Person("matthieu", 21)
+    val madame = Person("Flavie", 22)
+    val robot = Person("Dalle", 1)
+
+    val list = listOf(monsieur, madame, robot)
+    val sorted = list.sortedBy{it.age}
+
+
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -21,8 +31,8 @@ class MainActivity : AppCompatActivity() {
     {
         // Regex to match any string starting with 'a'
         val pattern = Regex("^a")
-        var testTrue = pattern.containsMatchIn("abc")
-        var testFalse = pattern.containsMatchIn("bac")
+        val testTrue = pattern.containsMatchIn("abc")
+        val testFalse = pattern.containsMatchIn("bac")
         Log.d("REGX", testTrue.toString())
         Log.d("REGX", testFalse.toString())
     }
@@ -31,8 +41,8 @@ class MainActivity : AppCompatActivity() {
     {
         // Regex to match any string starting with 'a'
         val pattern = Regex("[0-9]")
-        var testTrue = pattern.matches("8")
-        var testFalse = pattern.matches("127")
+        val testTrue = pattern.matches("8")
+        val testFalse = pattern.matches("127")
         Log.d("REGX", testTrue.toString())
         Log.d("REGX", testFalse.toString())
     }
@@ -41,8 +51,8 @@ class MainActivity : AppCompatActivity() {
     {
         // Regex to match any string starting with 'a'
         val pattern = Regex("[:alnum:]+")
-        var testTrue = pattern.matches("pokemon128")
-        var testFalse = pattern.matches("pokemon*%")
+        val testTrue = pattern.matches("pokemon128")
+        val testFalse = pattern.matches("pokemon*%")
         Log.d("REGX", testTrue.toString())
         Log.d("REGX", testFalse.toString())
     }
@@ -51,8 +61,8 @@ class MainActivity : AppCompatActivity() {
     {
         // Regex to match any string starting with 'a'
         val pattern = Regex("[:0-9]{10}")
-        var testTrue = pattern.matches("0661262319")
-        var testFalse = pattern.matches("+33661262319")
+        val testTrue = pattern.matches("0661262319")
+        val testFalse = pattern.matches("+33661262319")
         Log.d("REGX", testTrue.toString())
         Log.d("REGX", testFalse.toString())
     }
@@ -61,8 +71,8 @@ class MainActivity : AppCompatActivity() {
     {
         // Regex to match any string starting with 'a'
         val pattern = Regex("^[\\w\\-\\.]+@(|\\w-]+\\.)+.([\\w\\-\\.])+")
-        var testTrue = pattern.matches("matmoz63@gmail.com")
-        var testFalse = pattern.matches("matmoz63gmail.com")
+        val testTrue = pattern.matches("matmoz63@gmail.com")
+        val testFalse = pattern.matches("matmoz63gmail.com")
         Log.d("REGX", testTrue.toString())
         Log.d("REGX", testFalse.toString())
     }
@@ -70,6 +80,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mail()
+
+        for (item in list){
+            Log.d("agedumonsieur", item.age.toString())
+        }
+        for (person in sorted){
+            Log.d("agedumonsieur", person.age.toString())
+        }
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
