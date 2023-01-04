@@ -27,9 +27,49 @@ class MainActivity : AppCompatActivity() {
         Log.d("REGX", testFalse.toString())
     }
 
+    fun chiffre()
+    {
+        // Regex to match any string starting with 'a'
+        val pattern = Regex("[0-9]")
+        var testTrue = pattern.matches("8")
+        var testFalse = pattern.matches("127")
+        Log.d("REGX", testTrue.toString())
+        Log.d("REGX", testFalse.toString())
+    }
+
+    fun alphanumerique()
+    {
+        // Regex to match any string starting with 'a'
+        val pattern = Regex("[:alnum:]+")
+        var testTrue = pattern.matches("pokemon128")
+        var testFalse = pattern.matches("pokemon*%")
+        Log.d("REGX", testTrue.toString())
+        Log.d("REGX", testFalse.toString())
+    }
+
+    fun telephone()
+    {
+        // Regex to match any string starting with 'a'
+        val pattern = Regex("[:0-9]{10}")
+        var testTrue = pattern.matches("0661262319")
+        var testFalse = pattern.matches("+33661262319")
+        Log.d("REGX", testTrue.toString())
+        Log.d("REGX", testFalse.toString())
+    }
+
+    fun mail()
+    {
+        // Regex to match any string starting with 'a'
+        val pattern = Regex("^[\\w\\-\\.]+@(|\\w-]+\\.)+.([\\w\\-\\.])+")
+        var testTrue = pattern.matches("matmoz63@gmail.com")
+        var testFalse = pattern.matches("matmoz63gmail.com")
+        Log.d("REGX", testTrue.toString())
+        Log.d("REGX", testFalse.toString())
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        regular()
+        mail()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
