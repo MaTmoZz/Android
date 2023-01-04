@@ -1,0 +1,1 @@
+certutil -hashfile android-studio-2021.3.1.17-windows.exe SHA256
